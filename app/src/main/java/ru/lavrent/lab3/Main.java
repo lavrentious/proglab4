@@ -18,7 +18,11 @@ public class Main {
             System.err.println("illegal argument");
         }
 
-        Hemul h = new Hemul("John", null);
-        System.out.println(h.toString());
+        try {
+            Hemul h = new Hemul(null, ClothingType.DRESS);
+            System.out.println(h.toString());
+        } catch (NullPointerException e) {
+            System.err.println("illegal argument 2");
+        }
     }
 }

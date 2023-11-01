@@ -1,11 +1,13 @@
 package ru.lavrent.lab3;
 
+import java.util.Objects;
+
 public class Hemul extends Character implements IJoyful, IHunter {
   private ClothingType clothingType;
 
   public Hemul(String name, ClothingType clothingType) {
     super(name, "Hemul");
-    this.clothingType = clothingType;
+    this.clothingType = Objects.requireNonNull(clothingType);
   }
 
   public void expressJoy() {
