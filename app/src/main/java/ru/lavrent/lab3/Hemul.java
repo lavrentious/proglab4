@@ -2,7 +2,7 @@ package ru.lavrent.lab3;
 
 import java.util.Objects;
 
-public class Hemul extends Character implements IJoyful, IHunter {
+public class Hemul extends Character implements IJoy, IHunt {
   private ClothingType clothingType;
 
   public Hemul(String name, ClothingType clothingType) {
