@@ -10,7 +10,7 @@ public abstract class Character {
   @Nonnull
   private String species;
 
-  public Character(String name, String species) {
+  public Character(@Nonnull String name, String species) {
     this.name = Objects.requireNonNull(name);
     this.species = Objects.requireNonNull(species);
   }
@@ -30,7 +30,10 @@ public abstract class Character {
 
   @Override
   public int hashCode() {
-    return 17 * (super.hashCode() + getName().hashCode());
+    int result = 17;
+    result = 31 * result + name.hashCode();
+    result = 31 * result + species.hashCode();
+    return result;
   }
 
   @Override
@@ -40,6 +43,6 @@ public abstract class Character {
     if (obj == null || getClass() != obj.getClass())
       return false;
     Character character = (Character) obj;
-    return getName().equals(character.getName());
+    return character.hashCode() == obj.hashCode();
   }
 }
