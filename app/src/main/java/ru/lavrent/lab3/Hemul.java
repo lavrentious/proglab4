@@ -6,7 +6,7 @@ public class Hemul extends Character implements IJoy, IHunt {
   private ClothingType clothingType;
 
   public Hemul(String name, ClothingType clothingType) {
-    super(name, "Hemul");
+    super(Objects.requireNonNull(name), "Hemul");
     this.clothingType = Objects.requireNonNull(clothingType);
   }
 
