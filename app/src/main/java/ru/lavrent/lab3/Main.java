@@ -4,12 +4,13 @@ package ru.lavrent.lab3;
 
 public class Main {
     public static void main(String[] args) {
-        Hemul hemul = new Hemul("Gandon", ClothingType.DRESS);
+        Hemul hemul = new Hemul("Joe Biden", ClothingType.DRESS);
         hemul.expressJoy();
         hemul.hunt("гусиный лук");
         System.out.println(hemul.toString());
-        Hemul hemul2 = new Hemul("Gandon", ClothingType.DRESS);
-        Hemul hemul3 = new Hemul("Pidor", ClothingType.DRESS);
+        Hemul hemul2 = new Hemul("Joe Biden", ClothingType.DRESS);
+        Hemul hemul3 = new Hemul("Anthony Blinken", ClothingType.DRESS);
+        new Hemul(null, null);
         System.out.println(hemul.equals(hemul2));
         System.out.println(hemul.equals(hemul3));
         try {
