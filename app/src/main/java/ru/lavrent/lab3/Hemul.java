@@ -1,7 +1,6 @@
 package ru.lavrent.lab3;
 
 import java.util.Objects;
-
 public class Hemul extends Character implements IJoy, IHunt {
   private ClothingType clothingType;
 
@@ -25,7 +24,14 @@ public class Hemul extends Character implements IJoy, IHunt {
 
   @Override
   public int hashCode() {
-    return 31 * (super.hashCode() + getName().hashCode() + clothingType.ordinal());
+    int[] primes = { 1087, 1091, 1093, 1097, 1103, 1109, 1117, 1123, 1129, 1151 };
+    int ans = 0;
+    final int k = this.clothingType.ordinal();
+    for (int i = 0; i < name.length(); i++) {
+      int charCode = (int) this.name.charAt(i);
+      ans += (int) Math.pow(primes[(charCode + k) % primes.length], i + charCode + k) % Integer.MAX_VALUE;
+    }
+    return ans;
   }
 
   @Override
