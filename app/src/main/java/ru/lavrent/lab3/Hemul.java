@@ -1,6 +1,11 @@
 package ru.lavrent.lab3;
 
+import ru.lavrent.lab3.exceptions.ForbiddenLootException;
+import ru.lavrent.lab3.exceptions.NoCloudsException;
+
+import java.util.List;
 import java.util.Objects;
+
 public class Hemul extends Character implements IJoy, IHunt {
   private ClothingType clothingType;
 
@@ -13,13 +18,40 @@ public class Hemul extends Character implements IJoy, IHunt {
     System.out.println("Хемуль " + getName() + " сиял от радости.");
   }
 
-  public void hunt(String loot) {
+  public void hunt(String loot) throws ForbiddenLootException {
+    if (loot.toLowerCase().contains("хемул"))
+      throw new ForbiddenLootException(this, "хемуль добывает ЧТО?? это каннибализм!");
     System.out.println("Хемуль " + getName() + " добывает " + loot + ".");
+  }
+
+  public String[] getCollection() {
+    class Collection { // nested local class
+      private String[] items;
+
+      public Collection(String[] items) {
+        this.items = items;
+      }
+
+      public String[] getItems() {
+        return this.items;
+      }
+    }
+    Collection collection = new Collection(new String[] { "stul", "stol", "shkaf" });
+    return collection.getItems();
   }
 
   @Override
   public String toString() {
-    return "Хемуль " + getName() + " одет в " + clothingType.toString() + ".";
+    return "Хемуль " + getName() + ", одетый в " + clothingType.toString() + "";
+  }
+
+  public void releaseClouds(List<EggShell.Cloud> clouds) {
+    System.out.println(this.toString() + " идёт выпускать тучки...");
+    if (clouds.size() == 0)
+      throw new NoCloudsException("...но тучек не оказалось");
+    for (EggShell.Cloud cloud : clouds) {
+      System.out.println(cloud.toString() + " выпущена");
+    }
   }
 
   @Override
