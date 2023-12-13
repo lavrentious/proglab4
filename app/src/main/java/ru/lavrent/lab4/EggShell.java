@@ -1,4 +1,4 @@
-package ru.lavrent.lab3;
+package ru.lavrent.lab4;
 
 public class EggShell {
   private static int count = 5;

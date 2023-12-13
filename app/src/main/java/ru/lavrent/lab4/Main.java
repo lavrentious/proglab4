@@ -1,7 +1,7 @@
-package ru.lavrent.lab3;
+package ru.lavrent.lab4;
 
-import ru.lavrent.lab3.exceptions.ForbiddenLootException;
-import ru.lavrent.lab3.exceptions.NoCloudsException;
+import ru.lavrent.lab4.exceptions.ForbiddenLootException;
+import ru.lavrent.lab4.exceptions.NoCloudsException;
 
 import java.util.ArrayList;
 import java.util.List;

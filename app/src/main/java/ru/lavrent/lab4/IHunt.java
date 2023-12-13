@@ -1,6 +1,6 @@
-package ru.lavrent.lab3;
+package ru.lavrent.lab4;
 
-import ru.lavrent.lab3.exceptions.ForbiddenLootException;
+import ru.lavrent.lab4.exceptions.ForbiddenLootException;
 
 public interface IHunt {
   void hunt(String loot) throws ForbiddenLootException;

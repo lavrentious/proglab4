@@ -1,4 +1,4 @@
-package ru.lavrent.lab3.exceptions;
+package ru.lavrent.lab4.exceptions;
 
 public class NoCloudsException extends RuntimeException { // unchecked exception
   public NoCloudsException(String message) {

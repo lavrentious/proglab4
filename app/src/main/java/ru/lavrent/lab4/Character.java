@@ -1,4 +1,4 @@
-package ru.lavrent.lab3;
+package ru.lavrent.lab4;
 
 import javax.annotation.Nonnull;
 

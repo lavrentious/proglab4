@@ -1,4 +1,4 @@
-val MAIN_CLASS = "ru.lavrent.lab3.Main"
+val MAIN_CLASS = "ru.lavrent.lab4.Main"
 
 plugins {
     application
@@ -24,7 +24,7 @@ application {
     mainClass.set(MAIN_CLASS)
 }
 tasks.shadowJar {
-    archiveBaseName.set("lab3")
+    archiveBaseName.set("lab4")
     archiveClassifier.set("")
     minimize()
 }
