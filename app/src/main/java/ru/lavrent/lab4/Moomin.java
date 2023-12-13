@@ -1,13 +1,16 @@
 package ru.lavrent.lab4;
 
-public class Moomin extends Character {
+public class Moomin extends Character implements IFly {
   public Moomin(String name) {
-    super(name, "Moomin");
+    super(name, "moomin");
   }
 
-  class Flyer { // non-static nested class
-    public void fly() {
-      System.out.println("Moomin " + Moomin.this.name + " is flying!");
-    }
+  public void flyOver(Object o) {
+    System.out.println(this.toString() + " flies over " + o.toString());
+  }
+
+  @Override
+  public String toString() {
+    return "moomin named " + this.name;
   }
 }

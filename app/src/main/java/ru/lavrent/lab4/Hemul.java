@@ -1,7 +1,7 @@
 package ru.lavrent.lab4;
 
-import ru.lavrent.lab4.exceptions.ForbiddenLootException;
-import ru.lavrent.lab4.exceptions.NoCloudsException;
+import ru.lavrent.lab4.exceptions.HemulCollectionTooBig;
+import ru.lavrent.lab4.exceptions.UglyClothesException;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,40 +18,39 @@ public class Hemul extends Character implements IJoy, IHunt {
     System.out.println("Хемуль " + getName() + " сиял от радости.");
   }
 
-  public void hunt(String loot) throws ForbiddenLootException {
-    if (loot.toLowerCase().contains("хемул"))
-      throw new ForbiddenLootException(this, "хемуль добывает ЧТО?? это каннибализм!");
+  public void showoffClothes() throws UglyClothesException {
+    if (this.clothingType == ClothingType.PANTS)
+      throw new UglyClothesException(this, this.clothingType);
+    System.out.println("%s хвастается одеждой".formatted(this.toString()));
+  }
+
+  public void hunt(String loot) {
     System.out.println("Хемуль " + getName() + " добывает " + loot + ".");
   }
 
-  public String[] getCollection() {
-    class Collection { // nested local class
-      private String[] items;
+  public void analyseCollection(List<String> items) {
+    class HemulsCollection {
+      private final String[] content;
 
-      public Collection(String[] items) {
-        this.items = items;
+      public HemulsCollection(List<String> items, int maxSize) {
+        if (items.size() > maxSize)
+          throw new HemulCollectionTooBig(Hemul.this, items.size(), maxSize);
+        this.content = new String[items.size()];
+        items.toArray(this.content);
       }
 
-      public String[] getItems() {
-        return this.items;
+      public String toString() {
+        return String.format("коллекция с содержимым: %s",
+            String.join(", ", this.content));
       }
     }
-    Collection collection = new Collection(new String[] { "stul", "stol", "shkaf" });
-    return collection.getItems();
+    HemulsCollection hemulsCollection = new HemulsCollection(items, 25);
+    System.out.println("%s анализирует свою коллекцию (%s)".formatted(this.toString(), hemulsCollection.toString()));
   }
 
   @Override
   public String toString() {
-    return "Хемуль " + getName() + ", одетый в " + clothingType.toString() + "";
-  }
-
-  public void releaseClouds(List<EggShell.Cloud> clouds) {
-    System.out.println(this.toString() + " идёт выпускать тучки...");
-    if (clouds.size() == 0)
-      throw new NoCloudsException("...но тучек не оказалось");
-    for (EggShell.Cloud cloud : clouds) {
-      System.out.println(cloud.toString() + " выпущена");
-    }
+    return "Хемуль " + getName() + ", одетый в " + clothingType.toString();
   }
 
   @Override
